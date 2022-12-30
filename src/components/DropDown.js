@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { GoChevronDown} from 'react-icons/go'
+import { GoChevronDown } from "react-icons/go";
 import Panel from "./Panel";
 
 const DropDown = ({ options, onChange, value }) => {
@@ -8,20 +8,24 @@ const DropDown = ({ options, onChange, value }) => {
 
   useEffect(() => {
     const handler = (event) => {
-      if(!divEl.current){
+      if (!divEl.current) {
         return;
       }
-      if(!divEl.current.contains(event.target)){
+      if (!divEl.current.contains(event.target)) {
+        console.log("Not in the dropdown");
+
         setIsOpen(false);
+      } else {
+        console.log("In the dropdown");
       }
-    }
+    };
 
-    document.addEventListener('click', handler, true)
+    document.addEventListener("click", handler, true);
 
-    return ()=> {
-      document.removeEventListener('click', handler)
-    }
-  }, [])
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
