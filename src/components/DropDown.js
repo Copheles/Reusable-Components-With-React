@@ -13,7 +13,6 @@ const DropDown = ({ options, onChange, value }) => {
       }
       if (!divEl.current.contains(event.target)) {
         console.log("Not in the dropdown");
-
         setIsOpen(false);
       } else {
         console.log("In the dropdown");
